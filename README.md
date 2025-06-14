@@ -1,1 +1,1 @@
-# OTT-React
+# Movie Ticket Booking
