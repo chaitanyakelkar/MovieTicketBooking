@@ -51,7 +51,7 @@ export const addShow = async (req, res) => {
                 poster_path: movieApiData.poster_path,
                 backdrop_path: movieApiData.backdrop_path,
                 genres: movieApiData.genres,
-                casts: movieCreditsData.casts,
+                casts: movieCreditsData.cast,
                 release_date: movieApiData.release_date,
                 orignal_language: movieApiData.orignal_language,
                 tagline: movieApiData.tagline || "",
@@ -60,7 +60,7 @@ export const addShow = async (req, res) => {
             }
 
             //add movie to database
-            movie = await Movie.create(movieDetails);
+            await Movie.create(movieDetails);
         }
 
         const showsToCreate = [];

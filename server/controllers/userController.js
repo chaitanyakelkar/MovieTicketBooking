@@ -13,7 +13,7 @@ export const getUserBookings = async (req, res) => {
             populate: {path: 'movie'}
         }).sort({createdAt: -1})
 
-        res.json({success: false, bookings})
+        res.json({success: true, bookings})
     } catch (error) {
         console.log(error)
         res.json({success: false, message: error.message})
@@ -53,7 +53,7 @@ export const getFavourites = async (req, res) => {
         const favorites = user.privateMetadata.favorites
 
         //get movies from database
-        const movies = await Movie.find(_id: {$in: favorites})
+        const movies = await Movie.find({_id:{$in: favorites}})
 
         res.json({success: true, movies})
     } catch (error) {
