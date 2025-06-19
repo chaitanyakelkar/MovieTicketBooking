@@ -4,6 +4,7 @@ import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 import sendEmail from "../configs/nodemailer.js";
 import fs from 'fs'
+import path from "path";
 
 // create client to send and receive events 
 export const inngest = new Inngest({ id: "movie-ticket-booking" })
@@ -86,7 +87,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
             populate: {path: "movie", model: "Movie"}
         }).populate("user")
 
-        const templateHtml = fs.readFileSync("../templates/ticketConfirmationTemplate.html", "utf-8");
+        const templateHtml = fs.readFileSync(path.join(__dirname, "../templates/ticketConfirmationTemplate.html"), "utf-8");
         const template = handlebars.compile(templateHtml);
         const optionsDate = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
         const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' };
