@@ -42,17 +42,18 @@
       <h2 class="header">🎉 New Show for {{movieTitle}} Just Added!</h2>
     </div>
 
-    <img src="{{image_base_url}}{{posterUrl}}" alt="Movie Poster" class="poster">
+    <img src="{{poster_url}}" alt="Movie Poster" class="poster">
 
     <div class="details">
       <p>A new show for <span class="highlight">{{movieTitle}}</span> has been added to our listings.</p>
       <p><span class="highlight">Date:</span> {{date}}</p>
       <p><span class="highlight">Time:</span> {{time}}</p>
+      <p><span class="highlight">Price:</span> {{price}}</p>
       <p><span class="highlight">Genre:</span> {{genre}}</p>
       <p><span class="highlight">Overview:</span><br> {{overview}}</p>
     </div>
 
-    <a href="{{movie_base_ur}}{{movieId}}/{{date}}" class="btn">Book Now</a>
+    <a href={{show_url}} class="btn">Book Now</a>
 
 
     <div class="footer">

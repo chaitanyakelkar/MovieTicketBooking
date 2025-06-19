@@ -213,10 +213,8 @@ const sendNewMovieNotifications = inngest.createFunction(
             genre,
             releaseDate: movie.release_date,
             overview: movie.overview,
-            poster_url: movie.poster_path,
-            image_base_url: process.env.TMDB_IMAGE_BASE_URL,
-            movieId,
-            movie_base_url: baseUrl + "/show/"
+            poster_url: `${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`,
+            movie_url: `${baseUrl} + /movies/ + ${movieId}`
         })
 
         const users = await User.find({})
@@ -256,10 +254,9 @@ const sendNewShowNotifications = inngest.createFunction(
             movieTitle: show.movie.title,
             genre,
             overview: show.movie.overview,
-            poster_url: show.movie.poster_path,
-            image_base_url: process.env.TMDB_IMAGE_BASE_URL,
-            movieId: show.movie._id,
-            movie_base_url: baseUrl + "/show/",
+            poster_url: `${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`,
+            show_url: `${process.env.HOST_URL}/movies/${show.movie._id.toString()}/${date}`,
+            price: show.showPrice,
             date,
             time
         })

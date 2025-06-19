@@ -42,7 +42,7 @@
       <h1>🎉 New Movie {{ movieTitle }} Just Landed!!</h1>
     </div>
 
-    <img src="{{image_base_url}}{{posterUrl}}" alt="Movie Poster" class="poster">
+    <img src={{poster_url}} alt="Movie Poster" class="poster">
 
     <div class="details">
       <p><span class="highlight">Title:</span> {{movieTitle}}</p>
@@ -51,7 +51,7 @@
       <p><span class="highlight">Overview:</span><br> {{overview}}</p>
     </div>
 
-    <a href="{{movie_base_ur}}{{movieId}}" class="btn">View Movie</a>
+    <a href={{movie_base_ur}} class="btn">View Movie</a>
 
 
     <div class="footer">

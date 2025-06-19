@@ -91,7 +91,7 @@ export const addShow = async (req, res) => {
             await Promise.all(
                 showIds.map(id =>
                     inngest.send({   //send new show notification for each show
-                        name: 'app/shows.added',
+                        name: 'app/show.added',
                         data: { showId: id },
             })
         )
