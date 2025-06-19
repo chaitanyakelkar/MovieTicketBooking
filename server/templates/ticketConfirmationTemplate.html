@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      color: #e50914;
+    }
+    .details {
+      margin-top: 20px;
+    }
+    .details p {
+      margin: 8px 0;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      text-align: center;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎬 Booking Confirmed - {{ movieTitle }}!</h1>
+      <p>Thank you for booking with MovieTime!</p>
+    </div>
+
+    <div class="details">
+      <p><strong>Date:</strong> {{ date }}</p>
+      <p><strong>Time:</strong> {{ time }}</p>
+      <p><strong>Seats:</strong> {{ seats }}</p>
+      <p><strong>Booking ID:</strong> {{ bookingId }}</p>
+      <p>Enjoy your movie! 🍿</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <p>Please arrive 15 minutes before the showtime. Show this email at the counter or scan your QR code (if provided) at the entrance.</p>
+    </div>
+
+    <div class="footer">
+      <p>Need help? Contact us at support@movietime.com</p>
+      <p>&copy; 2025 MovieTime. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

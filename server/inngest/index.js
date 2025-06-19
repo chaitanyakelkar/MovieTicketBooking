@@ -2,6 +2,8 @@ import { Inngest } from "inngest";
 import User from "../models/User.js";
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
+import sendEmail from "../configs/nodemailer.js";
+import fs from 'fs'
 
 // create client to send and receive events 
 export const inngest = new Inngest({ id: "movie-ticket-booking" })
@@ -72,10 +74,46 @@ const releaseSeatsAndDeleteBooking = inngest.createFunction(
     }
 )
 
+// inngest function to send the confirmation email
+const sendBookingConfirmationEmail = inngest.createFunction(
+    {id: 'send-booking-confirmation-email'},
+    {event: 'app/show.booked'},
+    async ({event, step}) => {
+        const {bookingId} = event.data
+
+        const booking = await Booking.findById(bookingId).pupulate({
+            path: "show",
+            populate: {path: "movie", model: "Movie"}
+        }).populate("user")
+
+        const templateHtml = fs.readFileSync("../templates/ticketConfirmationTemplate.html", "utf-8");
+        const template = handlebars.compile(templateHtml);
+        const optionsDate = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
+        const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' };
+        const dateObj = new Date(booking.show.showDateTime);
+        const date = dateObj.toLocaleDateString('en-US', optionsDate)
+        const time = dateObj.toLocaleTimeString('en-US', optionsTime)
+        const htmlContent = template({
+            movieTitle: booking.show.movie.title,
+            date,
+            time,
+            seats: booking.bookedSeats.join(", "),
+            bookingId: booking._id,
+        });
+
+        await sendEmail({
+            to: booking.user.email,
+            subject: `🎟️ Your Tickets for ${booking.show.movie.title} Are Confirmed!`,
+            body: htmlContent
+        })
+    }
+)
+
 // create an array where we export Inngest functions
 export const functions = [
     syncUserCreation,
     syncUserDeletion,
     syncUserUpdation,
-    releaseSeatsAndDeleteBooking
+    releaseSeatsAndDeleteBooking,
+    sendBookingConfirmationEmail
 ]
