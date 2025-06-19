@@ -64,7 +64,7 @@ export const addShow = async (req, res) => {
             await Movie.create(movieDetails);
 
             //send new movie notification
-            inngest.send({
+            await inngest.send({
                 name: 'app/movie.added',
                 data: {movieId}
             })
@@ -88,13 +88,14 @@ export const addShow = async (req, res) => {
             const addedShows = await Show.insertMany(showsToCreate)
             const showIds = addedShows.map(show => show._id.toString())
 
-            showIds.forEach(id => {
-                //send new show notification for each show
-                inngest.send({
-                    name: 'app/shows.added',
-                    data: {showId: id}
-                })
+            await Promise.all(
+                showIds.map(id =>
+                    inngest.send({   //send new show notification for each show
+                        name: 'app/shows.added',
+                        data: { showId: id },
             })
+        )
+    );
         }
 
         res.json({success:true, message: 'Show Added Successfully!'})

@@ -12,9 +12,7 @@ import Movie from "../models/Movie.js";
 // create client to send and receive events 
 export const inngest = new Inngest({ id: "movie-ticket-booking" })
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
+const baseUrl = process.env.HOST_URL
 
 //inngest function to save user data to database
 export const syncUserCreation = inngest.createFunction(
