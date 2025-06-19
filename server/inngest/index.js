@@ -6,6 +6,7 @@ import sendEmail from "../configs/nodemailer.js";
 import fs from 'fs'
 import path from "path";
 import { fileURLToPath } from "url";
+import handlebars from 'handlebars'
 
 // create client to send and receive events 
 export const inngest = new Inngest({ id: "movie-ticket-booking" })
