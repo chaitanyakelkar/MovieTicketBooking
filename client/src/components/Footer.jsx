@@ -1,12 +1,17 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { Link } from 'react-router-dom'
+import { Videotape } from 'lucide-react'
 
 const Footer = () => {
   return (
     <footer className="px-6 md:px-16 lg:px-36 mt-40 w-full text-gray-300">
             <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500 pb-14">
                 <div className="md:max-w-96">
-                    <img className="w-36 h-auto" src={assets.logo} alt="logo" />
+                    <Link to="/" className='max-md:flex-1 flex items-center'>
+                        <Videotape className='text-primary h-10 w-10'/>
+                        <span className='ml-1 text-2xl'>MovieTicketBooking</span>
+                    </Link>
                     <p className="mt-6 text-sm">
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     </p>
@@ -35,7 +40,7 @@ const Footer = () => {
                 </div>
             </div>
             <p className="pt-4 text-center text-sm pb-5">
-                Copyright {new Date().getFullYear()} © IYKYK. All Right Reserved.
+                Copyright {new Date().getFullYear()} © MovieTicketBooking. All Right Reserved.
             </p>
         </footer>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
-import { MenuIcon, SearchIcon, TicketPlus, XIcon } from "lucide-react"
+import { MenuIcon, SearchIcon, TicketPlus, Videotape, XIcon } from "lucide-react"
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react'
 import { useAppContext } from '../context/AppContext'
 
@@ -16,8 +16,9 @@ const Navbar = () => {
 
   return (
     <div className='fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5 backdrop-blur-sm'>
-      <Link to="/" className='max-md:flex-1'>
-        <img src={assets.logo} alt="" className='w-36 h-auto'/>
+      <Link to="/" className='max-md:flex-1 flex items-center'>
+        <Videotape className='text-primary h-10 w-10'/>
+        <span className='ml-1 text-2xl'>MovieTicketBooking</span>
       </Link>
 
       <div className={`max-md:absolute max-md:top-0 max-md:left-0 max-md:font-medium max-md:text-lg z-50 flex flex-col md:flex-row items-center max-md:justify-center gap-8 min-md:px-8 py-3 max-md:h-screen min-md:rounded-full backdrop-blur bg-black/70 md:bg-white/10 md:border border-gray-300/20 overflow-hidden transition-[width] duration 300 ${isOpen ? 'max-md:w-full' : 'max-md:w-0'}`}>
