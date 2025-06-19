@@ -214,7 +214,7 @@ const sendNewMovieNotifications = inngest.createFunction(
             releaseDate: movie.release_date,
             overview: movie.overview,
             poster_url: `${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`,
-            movie_url: `${baseUrl} + /movies/ + ${movieId}`
+            movie_url: `${baseUrl}/movies/${movieId}`
         })
 
         const users = await User.find({})
