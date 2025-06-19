@@ -255,7 +255,7 @@ const sendNewShowNotifications = inngest.createFunction(
             genre,
             overview: show.movie.overview,
             poster_url: `${process.env.TMDB_IMAGE_BASE_URL}${show.movie.poster_path}`,
-            show_url: `${process.env.HOST_URL}/movies/${show.movie._id.toString()}/${date}`,
+            show_url: `${process.env.HOST_URL}/movies/${show.movie._id.toString()}/${dateObj.toISOString().slice(0, 10)}`,
             price: show.showPrice,
             date,
             time
