@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New Movie Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+    }
+    .details {
+      margin-top: 20px;
+    }
+    .details p {
+      margin: 8px 0;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      text-align: center;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎉 New Movie {{ movieTitle }} Just Landed!!</h1>
+    </div>
+
+    <img src="{{image_base_url}}{{posterUrl}}" alt="Movie Poster" class="poster">
+
+    <div class="details">
+      <p><span class="highlight">Title:</span> {{movieTitle}}</p>
+      <p><span class="highlight">Genre:</span> {{genre}}</p>
+      <p><span class="highlight">Release Date:</span> {{releaseDate}}</p>
+      <p><span class="highlight">Overview:</span><br> {{overview}}</p>
+    </div>
+
+    <a href="{{movie_base_ur}}{{movieId}}" class="btn">View Movie</a>
+
+
+    <div class="footer">
+      <p>&copy; 2025 MovieTicketBooking. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
