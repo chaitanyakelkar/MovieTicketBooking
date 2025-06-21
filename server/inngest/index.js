@@ -171,13 +171,13 @@ const sendShowReminders = inngest.createFunction(
         //send reminder emails
         const results = await step.run('send-all-reminders', async () => {
             return await Promise.allSettled(
-                reminderTasks.map(task => {
+                reminderTasks.map(async task => {
                     const htmlContent = template({
                         movieTitle: task.movieTitle,
                         date: task.date,
                         time: task.time
                     })
-                    sendEmail({
+                    return await sendEmail({
                         to: task.userEmail,
                         subject: `🎬 Reminder: ${task.movieTitle} Starts Soon!`,
                         body: htmlContent
