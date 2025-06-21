@@ -13,13 +13,13 @@ export const getDashboardData = async (req, res) => {
     try {
         const bookings = await Booking.find({isPaid: true})
         const activeShows = await Show.find({showDateTime: {$gte: new Date()}}).populate('movie')
-        const totalUser = await User.countDocuments()
+        const totalUsers = await User.countDocuments()
 
         const dashboardData = {
             totalBookings: bookings.length,
             totalRevenue: bookings.reduce((total, booking) => total + booking.amount, 0),
             activeShows,
-            totalUser
+            totalUsers
         }
 
         res.json({success: true, dashboardData})
