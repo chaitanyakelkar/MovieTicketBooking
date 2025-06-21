@@ -11,6 +11,7 @@ Deployed on [Vercel](https://movie-ticket-booking-blond.vercel.app/)
 ## 📌 Features
 
 - 👤 User authentication and session management (via [Clerk](https://clerk.dev))
+- 🎬 Dynamic movie data fetched from TMDB
 - 🎟️ Movie and show browsing
 - 🪑 Seat selection and booking
 - 💳 Secure online payments via [Stripe](https://stripe.com)
@@ -40,6 +41,7 @@ Deployed on [Vercel](https://movie-ticket-booking-blond.vercel.app/)
 - [Inngest](https://www.inngest.com) for background jobs/event triggers
 - [Brevo](https://www.brevo.com) for sending transactional emails
 - [Stripe](https://stripe.com) for payment integration
+- [TMDB](https://www.themoviedb.org/) for movie data
 
 ### Deployment
 - Frontend + Server: [Vercel](https://vercel.com)
@@ -66,6 +68,7 @@ Before you begin, make sure you have the following installed:
   * [Stripe](https://stripe.com) – for payments
   * [Inngest](https://www.inngest.com) – for background jobs
   * [Brevo](https://www.brevo.com) – for sending emails
+  * [TMDB](https://www.themoviedb.org/) - for movie data
 
 ---
 
@@ -85,21 +88,31 @@ Create `.env` files in both the `server` and `client` directories.
 #### 📁 server/.env
 
 ```env
-PORT=5000
 MONGO_URI=your_mongodb_connection_string
+HOST_URL=you_frontend_url
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
-BREVO_API_KEY=your_brevo_api_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
 INGGEST_EVENT_KEY=your_inngest_event_key
-FRONTEND_URL=http://localhost:5173
+INGGEST_SIGNING_KEY=your_inngest_signing_key
+TMDB_API_KEY=your_tmdb_api_key
+TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p/original
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+SENDER_EMAIL=your_brevo_sender_email
+SMTP_HOST=your_smtp_host_address
+SMTP_PORT=your_smtp_port brevo=587
+SMTP_USER=your_smtp_user
+SMTP_PASSWORD=your_smtp_password
 ```
 
 #### 📁 client/.env
 
 ```env
+VITE_CURRENCY=currency_symbol
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-VITE_INGGEST_EVENT_URL=https://api.inngest.com/fn/<your-function-id>
-VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+VITE_BASE_URL=your_server_url
+VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p/original
 ```
 
 Replace all placeholder values (`your_*`) with your actual API keys and URLs.
