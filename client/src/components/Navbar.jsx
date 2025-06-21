@@ -15,7 +15,7 @@ const Navbar = () => {
   const {favoriteMovies} = useAppContext()
 
   return (
-    <div className='fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5 backdrop-blur-sm'>
+    <div className='fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5 backdrop-blur-sm bg-gradient-to-r from-black/60 via-black/40 to-black/10'>
       <Link to="/" className='max-md:flex-1 flex items-center'>
         <Videotape className='text-primary h-10 w-10'/>
         <span className='ml-1 text-2xl'>MovieTicketBooking</span>

@@ -8,23 +8,25 @@ const HeroSection = () => {
     const navigate = useNavigate()
 
   return (
-    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("/backgroundImage.png")] bg-cover bg-center h-screen'> 
-        <img src={assets.marvelLogo} alt="" className='max-h-11 lg:h-11 mt-20'/>
-        <h1 className='text-5xl md:text-[70px] md:leading-18 font-semibold max-2-110'>Guardians <br /> of the Galaxy</h1>       
+    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("/oppenheimer.png")] bg-cover bg-center h-screen'> 
+        {/* <img src={assets.warnerbrosLogo} alt="" className='max-h-25 lg:h-25 mt-20'/> */}
+        <div className='flex flex-col items-start justify-center gap-4 backdrop-blur-sm bg-black/30 pl-3 pt-2 rounded-3xl overflow-hidden'>
+            <h1 className='text-5xl md:text-[70px] md:leading-18 font-semibold max-2-110'>Oppenheimer</h1>       
         <div className='flex item-center gap-4 text-gray-300'>
-            <span>Action | Adventure | Sci-Fi</span>
+            <span>Biography | Drama | History</span>
             <div className='flex item-center gap-1'>
-                <CalendarIcon className='w-4.5 h-4.5'/> 2018
+                <CalendarIcon className='w-4.5 h-4.5'/> 2023
             </div>
             <div className='flex item-center gap-1'>
-                <ClockIcon className='w-4.5 h-4.5'/> 2h 8m
+                <ClockIcon className='w-4.5 h-4.5'/> 3h
             </div>
         </div>
-        <p className='max-w-md text-gray-300'>A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.</p>
+        <p className='max-w-md text-gray-300 mb-4'>A dramatization of the life story of J. Robert Oppenheimer, the physicist who had a large hand in the development of the atomic bombs that brought an end to World War II.</p>
         <button onClick={() => {navigate("/movies")}} className='flex item-center gap-1 px-6 py-6 text-sm bg-primary hover:bg-primary:dull transition rounded-full font-medium cursor-pointer'>
             Explore Movies
             <ArrowRight className='w-5 h-5'/>
         </button>
+        </div>
     </div>
   )
 }
