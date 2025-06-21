@@ -70,6 +70,16 @@ Deployed on [Vercel](https://movie-ticket-booking-blond.vercel.app/)
 </p>
 <p align="center"><em>Seat Selection Page</em></p>
 
+<p align="center">
+  <img src="screenshots/admindashboard.png" alt="AdminDashboard"/>
+</p>
+<p align="center"><em>Admin Dashboard Page</em></p>
+
+<p align="center">
+  <img src="screenshots/addshow.png" alt="AddShow"/>
+</p>
+<p align="center"><em>Add Show Page</em></p>
+
 ## 📦 Installation
 
 ### 📦 Prerequisites
