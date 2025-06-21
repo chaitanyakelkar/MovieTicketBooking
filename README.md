@@ -50,8 +50,11 @@ Deployed on [Vercel](https://movie-ticket-booking-blond.vercel.app/)
 ---
 
 ## 📷 Screenshots
-![HomePage](./screenshots/homepage.png)
-_Landing Page_
+<p align="center">
+  <img src="screenshots/homepage.png" alt="Homepage" width="600"/>
+</p>
+
+<p align="center"><em>Homepage showing movie listings</em></p>
 
 ## 📦 Installation
 
