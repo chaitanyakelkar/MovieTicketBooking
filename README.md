@@ -48,6 +48,8 @@ Deployed on [Vercel](https://movie-ticket-booking-blond.vercel.app/)
 ---
 
 ## 📷 Screenshots
+![HomePage](./screenshots/homepage.png)
+_Landing Page_
 
 ## 📦 Installation
 
