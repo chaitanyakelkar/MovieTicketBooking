@@ -8,11 +8,13 @@ import { useAppContext } from '../context/AppContext'
 const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const {user} = useUser()
+  const {user, isLoaded} = useUser()
   const {openSignIn} = useClerk()
   const navigate = useNavigate()
 
   const {favoriteMovies} = useAppContext()
+
+  const isAdmin = isLoaded && user?.publicMetadata?.role === "admin"
 
   return (
     <div className='fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5 backdrop-blur-sm bg-gradient-to-r from-black/60 via-black/40 to-black/10'>
@@ -29,7 +31,8 @@ const Navbar = () => {
         <Link to="/" onClick={() => {scrollTo(0,0); setIsOpen(false)}}>Theaters</Link>
         <Link to="/" onClick={() => {scrollTo(0,0); setIsOpen(false)}}>Releases</Link>
         { favoriteMovies.length > 0 && (<Link to="/favorite" onClick={() => {scrollTo(0,0); setIsOpen(false)}}>Favorites</Link>)}
-      </div>
+        { isAdmin && (<Link to="/admin" onClick={() => {scrollTo(0,0); setIsOpen(false)}}>Admin</Link>)}
+        </div>
 
       <div className='flex items-center gap-8'>
         <SearchIcon className='max-md:hidden w-6 h-6 cursor-pointer'/>
